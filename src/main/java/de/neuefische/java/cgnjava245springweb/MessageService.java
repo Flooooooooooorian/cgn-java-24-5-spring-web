@@ -12,15 +12,17 @@ import java.util.UUID;
 public class MessageService {
 
     private final MessageRepository messageRepository;
+    private final IdService idService;
 
-    public MessageService(MessageRepository messageRepository) {
+    public MessageService(MessageRepository messageRepository, IdService idService) {
         this.messageRepository = messageRepository;
+        this.idService = idService;
     }
 
     public Message createMessage(Message message) {
 
         Message messageToSave = message
-                .withId(UUID.randomUUID().toString())
+                .withId(idService.randomId())
                 .withSentAt(Instant.now());
 
         return messageRepository.save(messageToSave);
