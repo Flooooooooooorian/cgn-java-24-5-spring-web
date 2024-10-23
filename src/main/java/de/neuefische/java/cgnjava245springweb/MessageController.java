@@ -23,6 +23,7 @@ public class MessageController {
         Message messageToSave = Message.builder()
                 .name(message.name())
                 .message(message.message())
+                .ip(message.ip())
                 .build();
 
         return messageService.createMessage(messageToSave);

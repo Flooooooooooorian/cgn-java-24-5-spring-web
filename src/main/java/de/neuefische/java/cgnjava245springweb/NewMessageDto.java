@@ -7,6 +7,7 @@ import lombok.With;
 
 public record NewMessageDto(
         String name,
-        String message
+        String message,
+        String ip
 ) {
 }
